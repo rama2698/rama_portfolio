@@ -160,7 +160,7 @@ const openExperienceModal = (experienceId) => {
     const expModalDiv = document.querySelector('.rb-exp-modal');
     if(experience) {
         if(experience.imageUrl && device != 'mobile'){
-            expModalDiv.querySelector('.rb-exp-modal-content').style.background = `url('${experience.imageUrl}') no-repeat center center`;
+            expModalDiv.querySelector('.rb-exp-modal-content').style.background = `url('/api/images/${experience.imageUrl}') no-repeat center center`;
         }
         expModalDiv.querySelector('.rb-exp-modal-content').style.backgroundSize = 'cover';
         expModalDiv.querySelector('.rb-exp-job-title').innerHTML = experience.designation + ' at ' + experience.company;
