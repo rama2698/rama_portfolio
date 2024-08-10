@@ -1,0 +1,77 @@
+{% load static %}
+<div id="work-experience" class="rb-col-100 rb-exp-section rb-col-flex rb-justify-center rb-align-center">
+    <div class="rb-col-100 rb-bg-dark rb-row-flex rb-justify-center">
+        <div class="rb-young-font rb-letter-space-5 rb-experience-header rb-pad-10-0 rb-bg-dark rb-text-lightgoldenrodyellow rb-font-24 {%if device == 'mobile' or device == 'tablet'%}rb-col-100rb-text-center {%else%}rb-col-80{%endif%}">Work Experience</div>
+    </div>
+    <div class="rb-col-100 rb-bg-gray rb-overflow-hidden rb-mr-20-0 rb-pos-rel rb-row-flex rb-justify-center">
+        {% include 'partials/borderBotRight.html' with borderClass="rb-pos-abs rb-bot-0 rb-rt-0" branchPrefixClass="rb-exp" leafHorClass="rb-pos-abs rb-exp-bot-hor-leaf" leafVerClass="rb-pos-abs rb-exp-bot-ver-leaf" branchColor=borderStyle.branchColor leafOutlineColor=borderStyle.leafOutlineColor leafColor=borderStyle.leafColor mainVeinColor=borderStyle.mainVeinColor sideVeinColor=borderStyle.sideVeinColor %}
+        {% include 'partials/borderTopLeft.html' with borderClass="rb-pos-abs rb-top-0 rb-lt-0 rb-rot-180" branchPrefixClass="rb-exp" leafHorClass="rb-pos-abs rb-exp-top-hor-leaf" leafVerClass="rb-pos-abs rb-exp-top-ver-leaf" branchColor=borderStyle.branchColor leafOutlineColor=borderStyle.leafOutlineColor leafColor=borderStyle.leafColor mainVeinColor=borderStyle.mainVeinColor sideVeinColor=borderStyle.sideVeinColor %}
+        <div class="rb-row-flex rb-flex-wrap rb-justify-center {%if device == 'mobile' or device == 'tablet'%}rb-col-90 rb-mb-exp-section-content rb-pad-40-0 {%if device == 'mobile'%}rb-zindex-5 {%else%}rb-zindex-4 rb-pad-lt-55 rb-pad-rt-65{%endif%}{%else%}rb-exp-section-content rb-zindex-4{%endif%}">
+            
+            <div class="rb-col-100 rb-row-flex rb-justify-center {%if device != 'mobile' and device != 'tablet'%}rb-exp-container rb-gap-45 rb-zindex-4 rb-pad-lt-55 rb-pad-rt-65{%else%}rb-mb-exp-container{%endif%}">
+                {% if device != 'mobile' and device != 'tablet' %}
+                    <div class="rb-exp-career-border"></div>
+                {% endif %}
+                <div class="rb-col-flex rb-justify-center rb-gap-30 {%if device == 'mobile'%}rb-col-100{%elif device == 'tablet'%}rb-col-100{%endif%}">
+                    
+                    {% for experience in experiences.experienceData %}
+                        <div class="rb-experience-block rb-row-flex rb-space-between rb-align-center rb-pos-rel rb-ht-100p rb-exp-block-transition rb-cur-pointer rb-bg-white {%if device == 'mobile' or device == 'tablet'%}rb-col-auto {%else%}rb-wdt-470{%endif%}" onclick="openExperienceModal({{experience.id}})">
+                            <div class="rb-col-90 rb-col-flex rb-ht-100 rb-space-around">
+                                {% if device != 'mobile' and device != 'tablet' %}
+                                    <div class="rb-pos-abs rb-career-icon rb-row-flex rb-bg-dark rb-justify-center rb-align-center">
+                                        <img src="{{experience.iconUrl}}" width="{{experience.iconWidth}}" height="{{experience.iconHeight}}" alt="{{experience.company}} experience Icon" />
+                                    </div>
+                                    <span class="rb-exp-tri-icon rb-text-lightgoldenrodyellow rb-pos-abs">&#9664;</span>
+                                {% endif %}
+                                <div class="rb-font-20 rb-text-bold">{{ experience.designation }}</div>
+                                <div class="rb-font-18 rb-text-bold">{{ experience.company }}</div>
+                                <div class="rb-font-16 rb-text-bold rb-text-mid-blue">{{ experience.duration }}</div>
+                            </div>
+                            
+                            <div class="rb-col-10 rb-row-flex rb-justify-center">
+                                <div class="rb-font-30 rb-row-flex rb-justify-center rb-align-center rb-text-lightgoldenrodyellow rb-bg-mid-blue rb-exp-more-icon">
+                                    <i class="fa-solid fa-circle-chevron-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="rb-exp-modal rb-top-0 rb-col-100 rb-ht-100vh rb-row-flex rb-justify-center rb-align-center" style="z-index:99999;">
+    <div class="rb-col-80 rb-exp-modal-content rb-pos-rel rb-bg-white">
+        <div class="rb-row-flex rb-space-between rb-align-center rb-bg-dark rb-text-lightgoldenrodyellow rb-exp-modal-header">
+            <div class="rb-pad-25 rb-young-font rb-font-20 rb-letter-space-5">
+                Work Details
+            </div>
+            <div class="rb-font-20 rb-text-mid-blue rb-exp-modal-close-btn rb-row-flex rb-justify-center rb-align-center rb-cur-pointer" onclick="closeExperienceModal()">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+        </div>
+        <div style="margin-top:70px;padding: 25px 10px 0 10px;">
+            <div class="rb-exp-job-title rb-font-20 rb-text-bold">
+                
+            </div>
+            <div class="rb-exp-job-duration rb-font-16 rb-text-bold rb-text-mid-blue">
+                
+            </div>
+            <div class="rb-exp-job-skills">
+                <div class="rb-font-20 rb-text-bold">
+                    Skills :
+                </div>
+                <div class="rb-exp-job-skills-content rb-row-flex rb-flex-wrap rb-gap-15">
+                    
+                </div>
+            </div>
+            <div class="rb-exp-job-desc">
+                <div class="rb-font-20 rb-text-bold">
+                    Responsibilities / Achievements :
+                </div>
+                <div class="rb-exp-job-desc-content rb-font-16" style="font-weight:599;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
