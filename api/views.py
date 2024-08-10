@@ -110,6 +110,12 @@ def getAllPortfolioData(request):
     }
     if experiencesData and not responseData["homepage"]["introText"]:
         responseData["homepage"]["introText"] = "Hi, I'm Ramanand Bhagat working as a " + str(experiencesData[0]['designation']) + " at " + str(experiencesData[0]['company'])
+    if resumeResponse:
+        experiencesData.insert(0, {
+            "designation": "Download CV",
+            "resumeUrl": str(resumeResponse.fileUrl).replace("files/", "files:"),
+            "resumeIcon": resumeResponse.info
+        })
     return JsonResponse(responseData)
 
 @csrf_exempt
