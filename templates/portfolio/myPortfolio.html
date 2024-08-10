@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block pageTitle%}Ramanand Portfolio{%endblock pageTitle%}
+
+{%block pageBody %}
+    {% include 'partials/homeCarousel.html' with device=device homepage=homepage %}
+    {% include 'partials/overview.html' with device=device overview=overview %}
+    {% include 'partials/skills.html' with device=device skills=skills %}
+    {% include 'partials/projects.html' with device=device borderStyle=settings.borderStyle projects=projects %}
+    {% include 'partials/experience.html' with device=device borderStyle=settings.borderStyle experiences=experiences %}
+    {% include 'partials/contactForm.html' with device=device %}
+{%endblock pageBody %}
