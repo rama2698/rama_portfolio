@@ -67,6 +67,12 @@ def getAllPortfolioData(request):
         "socialLinks": sanitizedSocialLinks
     }
     resumeResponse = WebsiteContent.objects.filter(type='resume').first() or ''
+    if resumeResponse:
+        responseData['homepage']['socialLinks'].append({
+            "title": resumeResponse.title,
+            "url": str(resumeResponse.fileUrl).replace("files/", "files:"),
+            "icon": resumeResponse.info
+        })
     responseData['resume'] = str(resumeResponse.fileUrl).replace("files/", "files:") if resumeResponse else ''
     # overview data
     overviewResponse = WebsiteContent.objects.filter(type='overview').first() or ''
