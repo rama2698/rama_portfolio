@@ -7,4 +7,5 @@ urlpatterns = [
     path('projects/all', views.getAllProjects, name='getAllProject'),
     path('get/portfolio-data', views.getAllPortfolioData, name='getAllPortfolioData'),
     path('send-mail', views.sendMail, name='sendMail'),
+    path('static/<str:file_path>', views.serveImages, name='serveImages'),
 ]
