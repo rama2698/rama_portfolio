@@ -6,7 +6,7 @@
     {% include 'partials/homeCarousel.html' with device=device homepage=homepage %}
     {% include 'partials/overview.html' with device=device overview=overview %}
     {% include 'partials/skills.html' with device=device skills=skills %}
-    {% include 'partials/projects.html' with device=device borderStyle=settings.borderStyle projects=projects %}
-    {% include 'partials/experience.html' with device=device borderStyle=settings.borderStyle experiences=experiences %}
+    {% include 'partials/projects.html' with device=device topBorderStyle=settings.borderStyle.projectTopBorderStyle botBorderStyle=settings.borderStyle.projectBotBorderStyle projects=projects %}
+    {% include 'partials/experience.html' with device=device topBorderStyle=settings.borderStyle.expTopBorderStyle botBorderStyle=settings.borderStyle.expBotBorderStyle experiences=experiences %}
     {% include 'partials/contactForm.html' with device=device %}
 {%endblock pageBody %}
