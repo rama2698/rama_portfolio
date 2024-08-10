@@ -1,0 +1,94 @@
+{% load static %}
+<div id="home" class="rb-col-100 rb-pos-rel rb-col-flex rb-align-center rb-justify-end rb-homepage-container rb-pad-top-74 {%if device == 'mobile'%}rb-mb-homepage-container{%elif device == 'tablet'%}rb-tb-homepage-container{%else%}rb-wb-homepage-container{%endif%}" {%if homepage.homepageBG%}style="background: url({{homepage.homepageBG}}) center center / cover no-repeat;" {%else%}style="background: url('{%static 'images/homepage-bg.jpg'%}') center center / cover no-repeat;"{%endif%}>
+  {%if device != 'mobile'%}
+    <div class="rb-young-font rb-pos-abs rb-row-flex rb-justify-center rb-align-center rb-text-light-blue rb-vertical-text-name-transform {%if device == 'mobile' or device == 'tablet'%}rb-{%if device == 'mobile'%}mb{%else%}tb{%endif%}-vertical-text-name-pos{%else%}rb-vertical-text-name-pos{%endif%}">
+        <span>R</span>
+        <span>A</span>
+        <span>M</span>
+        <span>A</span>
+        <span>N</span>
+        <span>A</span>
+        <span>N</span>
+        <span>D</span>
+    </div>
+    <div class="rb-young-font rb-pos-abs rb-row-flex rb-justify-center rb-align-center rb-text-light-blue rb-vertical-text-surname-transform {%if device == 'mobile' or device == 'tablet'%}rb-{%if device == 'mobile'%}mb{%else%}tb{%endif%}-vertical-text-surname-pos{%else%}rb-vertical-text-surname-pos{%endif%}">
+        <span>B</span>
+        <span>H</span>
+        <span>A</span>
+        <span>G</span>
+        <span>A</span>
+        <span>T</span>
+    </div>
+  {%endif%}
+  <div class="rb-young-font rb-text-red rb-pos-abs rb-homepage-text-backend {%if device == 'mobile' or device == 'tablet'%}rb-{%if device == 'mobile'%}mb{%else%}tb{%endif%}-home-text rb-{%if device == 'mobile'%}mb{%else%}tb{%endif%}-home-backend-pos{%else%}rb-home-text rb-home-backend-pos{%endif%}">
+      <span>B</span>
+      <span>A</span>
+      <span>C</span>
+      <span>K</span>
+      <span>E</span>
+      <span>N</span>
+      <span>D</span>
+  </div>
+  <div class="rb-young-font rb-text-lightgoldenrodyellow rb-pos-abs rb-homepage-text-frontend {%if device == 'mobile' or device == 'tablet'%}rb-{%if device == 'mobile'%}mb{%else%}tb{%endif%}-home-text rb-{%if device == 'mobile'%}mb{%else%}tb{%endif%}-home-frontend-pos{%else%}rb-home-text rb-home-frontend-pos{%endif%}" style="">
+      <span>F</span>
+      <span>R</span>
+      <span>O</span>
+      <span>N</span>
+      <span>T</span>
+      <span>E</span>
+      <span>N</span>
+      <span>D</span>
+  </div>
+  <div class="rb-young-font rb-outlined-text rb-homepage-outlined-text-frontend rb-pos-abs {%if device == 'mobile' or device == 'tablet'%}rb-{%if device == 'mobile'%}mb{%else%}tb{%endif%}-home-text rb-{%if device == 'mobile'%}mb{%else%}tb{%endif%}-home-outlined-frontend-pos{%else%}rb-home-text rb-home-outlined-frontend-pos{%endif%}" style="">
+      <span>F</span>
+      <span>R</span>
+      <span>O</span>
+      <span>N</span>
+      <span>T</span>
+      <span>E</span>
+      <span>N</span>
+      <span>D</span>
+  </div>
+  <div class="rb-young-font rb-text-red rb-pos-abs rb-homepage-text-developer {%if device == 'mobile' or device == 'tablet'%}rb-{%if device == 'mobile'%}mb{%else%}tb{%endif%}-home-text rb-{%if device == 'mobile'%}mb{%else%}tb{%endif%}-home-developer-pos{%else%}rb-home-text rb-home-developer-pos{%endif%}" style="">
+      <span>D</span>
+      <span>E</span>
+      <span>V</span>
+      <span>E</span>
+      <span>L</span>
+      <span>O</span>
+      <span>P</span>
+      <span>E</span>
+      <span>R</span>
+  </div>
+  <div class="rb-young-font rb-text-lightgoldenrodyellow rb-pos-abs rb-homepage-text-fullstack {%if device == 'mobile' or device == 'tablet'%}rb-{%if device == 'mobile'%}mb{%else%}tb{%endif%}-home-text rb-{%if device == 'mobile'%}mb{%else%}tb{%endif%}-home-fullstack-pos{%else%}rb-home-text rb-home-fullstack-pos{%endif%}" style="">
+      <span>F</span>
+      <span>U</span>
+      <span>L</span>
+      <span>L</span>
+      <span>S</span>
+      <span>T</span>
+      <span>A</span>
+      <span>C</span>
+      <span>K</span>
+  </div>
+  <div class="rb-young-font rb-text-lightgoldenrodyellow rb-pos-abs rb-outlined-text rb-homepage-outlined-text-fullstack {%if device == 'mobile' or device == 'tablet'%}rb-{%if device == 'mobile'%}mb{%else%}tb{%endif%}-home-text rb-{%if device == 'mobile'%}mb{%else%}tb{%endif%}-home-outlined-fullstack-pos{%else%}rb-home-text rb-home-outlined-fullstack-pos{%endif%}" style="">
+      <span>F</span>
+      <span>U</span>
+      <span>L</span>
+      <span>L</span>
+      <span>S</span>
+      <span>T</span>
+      <span>A</span>
+      <span>C</span>
+      <span>K</span>
+  </div>
+  <div class="rb-zindex-2">
+      <img class="rb-col-100" src="{% static 'images/man.png' %}" {%if device == 'mobile'%}height="500"{%elif device == 'tablet'%}height="700"{%else%}height="745"{%endif%} />
+  </div>
+</div>
+
+<div id="about" class="rb-col-100 rb-bg-mid-blue rb-pad-10-0 rb-row-flex rb-justify-center rb-align-center" style="min-height:95px;">
+  <div class="rb-col-80 rb-text-center rb-font-24 rb-text-lightgoldenrodyellow rb-text-bold">
+    <span class="rb-intro-text"></span><span class='rb-blinking-cursor'></span>
+  </div>
+</div>
