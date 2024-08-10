@@ -4,6 +4,9 @@ from api.models import WebsiteContent, Skill, Experience, Project, ContactRespon
 from django.views.decorators.csrf import csrf_exempt
 from .utils import changeImageBasepath, projectsDesc
 import math, json
+from django.http import HttpResponse, Http404
+from google.cloud import storage
+from google.auth import exceptions
 
 # Create your views here.
 def getAllSkills(request):
@@ -63,6 +66,8 @@ def getAllPortfolioData(request):
         "introText": homepageIntroTextResponse.description if homepageIntroTextResponse else '',
         "socialLinks": sanitizedSocialLinks
     }
+    resumeResponse = WebsiteContent.objects.filter(type='resume').first() or ''
+    responseData['resume'] = "https://storage.googleapis.com/portfolio-2698/" + str(resumeResponse.fileUrl) if resumeResponse else ''
     # overview data
     overviewResponse = WebsiteContent.objects.filter(type='overview').first() or ''
     responseData['overview'] = {
@@ -116,3 +121,24 @@ def sendMail(request):
         except:
             return JsonResponse({"Error" : "Something Went Wrong!"})
     return JsonResponse({"Error" : "Something Went Wrong!"})
+
+# proxy for static files
+def serveImages(request, file_path):
+    client = storage.Client()
+    bucket = client.bucket('portfolio-2698')
+    file_path = file_path.replace(":img:", "/")
+
+    try:
+        blob = bucket.blob(file_path)
+        if not blob.exists():
+            raise Http404("File not found")
+
+        # Download the image as a byte string
+        image_data = blob.download_as_bytes()
+        content_type = blob.content_type
+
+        return HttpResponse(image_data, content_type=content_type)
+
+    except exceptions.GoogleAuthError as e:
+        raise Http404("File not Found!")
+
