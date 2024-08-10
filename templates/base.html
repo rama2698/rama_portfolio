@@ -4,7 +4,7 @@
     <head>
         <title>{%block pageTitle%}{%endblock pageTitle%}</title>
         <meta charset="utf-8">
-        <link rel="icon" href="{% static 'images/RbLogo.png' %}" type="image/x-icon">
+        <link rel="icon" {%if settings.logoUrl%}href="/api/static/{{settings.logoUrl}}"{%else%}href="{% static 'images/RbLogo.png' %}"{%endif%} type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static '/css/index.css' %}">
         <script src="{% static 'script/three.min.js' %}"></script>
@@ -33,7 +33,7 @@
 
     <body class="rb-bg-white">
         <div class="rb-col-100" id="rb-ini-page-body">
-            {% include 'partials/pageHeader.html' with device=device %}
+            {% include 'partials/pageHeader.html' with device=device logoUrl=settings.logoUrl %}
             {%block pageBody %}{%endblock pageBody %}
             {% include 'partials/pageFooter.html' with device=device resumeLink=resume settings=settings socialLinks=homepage.socialLinks%}
         </div>

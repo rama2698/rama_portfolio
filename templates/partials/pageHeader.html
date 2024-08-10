@@ -2,7 +2,7 @@
 <div class="rb-col-100 rb-pos-fixed rb-zindex-top rb-row-flex rb-justify-center rb-bg-dark rb-text-lightgoldenrodyellow rb-page-header">
     <div class="rb-col-80 rb-row-flex rb-space-between rb-pad-5-0">
         <a href="#home" class="rb-row-flex rb-align-center rb-gap-5 rb-header-link rb-cur-pointer">
-            <div><img src="{% static 'images/RbLogo.png' %}" width="60" height="60" /></div>
+            <div><img {%if logoUrl%}src="/api/static/{{logoUrl}}"{%else%}src="{% static 'images/RbLogo.png' %}"{%endif%} width="60" height="60" /></div>
             <div class="rb-young-font rb-font-30 rb-letter-space-5">RAMA</div>
         </a>
         {% if device == 'mobile' or device == 'tablet' %}

@@ -49,7 +49,7 @@ def getAllPortfolioData(request):
 
     LogoResponse = WebsiteContent.objects.filter(type='homepageLogo').first() or ''
     if LogoResponse:
-        responseData['settings']['logoUrl'] = LogoResponse.imageUrl
+        responseData['settings']['logoUrl'] = str(LogoResponse.imageUrl).replace("/", ':img:')
     responseData['settings']['borderStyle'] = getBorderStyleData(projectBorderStyleResponse, expBorderStyleResponse)
 
     # homepage carousel data
