@@ -1,4 +1,20 @@
 const projectCardPrefix = ['mobile', 'tablet'].includes(device) ? 'mb-' : '';
+// cookies
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
 
 // =============================SKILLS VIEW====================================
 //function to create skill object
@@ -824,6 +840,67 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Run the function once to check the initial position
     checkVisibility();
+
+    // contact form
+    document.getElementById('rb-form-send-mail').addEventListener('submit', function(event) {
+        // Prevent form from submitting normally
+        event.preventDefault();
+        const messageContent = document.querySelector('.rb-msg');
+    
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+        const body = message + "\n\nRegards,\n" + name + "\n" + email
+        
+        // Construction the mailto link
+        const mailtoLink = 'mailto:ramanandbhagat79@gmail.com'
+            + '?subject=' + encodeURIComponent(subject)
+            + '&body=' + encodeURIComponent(body);
+        
+        // API URL
+        const apiUrl = '/api/send-mail';
+    
+        // Data to send in API call
+        var data = {
+            name: name,
+            email: email,
+            subject: subject,
+            message: message
+        };
+    
+        // Make the API call
+        fetch('/api/send-mail', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json, text/html, utf-8',
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            messageContent.classList.remove('rb-text-red', 'rb-text-success');
+            messageContent.classList.add('rb-text-success');
+            messageContent.innerHTML = "Message Sent Successfully!";
+            document.getElementById('name').value = "";
+            document.getElementById('email').value = "";
+            document.getElementById('subject').value = "";
+            document.getElementById('message').value = "";
+            setTimeout(() => {
+                messageContent.innerHTML = "";
+            }, 2000);
+        })
+        .catch((error) => {
+            messageContent.classList.remove('rb-text-success', 'tb-text-red');
+            messageContent.classList.add('rb-text-red');
+            messageContent.innerHTML = "Something went wrong! Please Try Again.";
+            setTimeout(() => {
+                messageContent.innerHTML = "";
+            }, 2000);
+        });
+    });
 });
 
 // =================================================================
