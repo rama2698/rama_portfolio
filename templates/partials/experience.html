@@ -15,24 +15,39 @@
                 <div class="rb-col-flex rb-justify-center rb-gap-30 {%if device == 'mobile'%}rb-col-100{%elif device == 'tablet'%}rb-col-100{%endif%}">
                     
                     {% for experience in experiences.experienceData %}
-                        <div class="rb-experience-block rb-row-flex rb-space-between rb-align-center rb-pos-rel rb-ht-100p rb-exp-block-transition rb-cur-pointer rb-bg-white {%if device == 'mobile' or device == 'tablet'%}rb-col-auto {%else%}rb-wdt-470{%endif%}" onclick="openExperienceModal({{experience.id}})">
-                            <div class="rb-col-90 rb-col-flex rb-ht-100 rb-space-around">
-                                {% if device != 'mobile' and device != 'tablet' %}
-                                    <div class="rb-pos-abs rb-career-icon rb-row-flex rb-bg-dark rb-justify-center rb-align-center">
-                                        <img src="{% url 'serveImages' experience.iconUrl %}" width="{{experience.iconWidth}}" height="{{experience.iconHeight}}" alt="{{experience.company}} experience Icon" />
+                        <div class="rb-experience-block rb-row-flex rb-space-between rb-align-center rb-pos-rel {%if experience.designation == 'Download CV'%}rb-ht-50p{%else%}rb-ht-100p{%endif%} rb-exp-block-transition rb-cur-pointer rb-bg-white {%if device == 'mobile' or device == 'tablet'%}rb-col-auto {%else%}rb-wdt-470{%endif%}" {%if experience.designation != 'Download CV'%}onclick="openExperienceModal({{experience.id}})"{%endif%}>
+                            {%if experience.designation == 'Download CV'%}
+                                <a href="{{experience.fileUrl}}" download="ramanand-bhagat-cv.pdf" class="rb-col-100 rb-row-flex rb-space-around rb-align-center">
+                                    {% if device != 'mobile' and device != 'tablet' %}
+                                        <div class="rb-pos-abs rb-career-icon rb-row-flex rb-bg-dark rb-justify-center rb-align-center rb-font-24 rb-text-gray">
+                                            {{experience.resumeIcon|safe}}
+                                        </div>
+                                        <span class="rb-exp-tri-icon rb-text-lightgoldenrodyellow rb-pos-abs">&#9664;</span>
+                                    {% endif %}
+                                    <div class="rb-col-90 rb-font-20 rb-text-bold rb-text-mid-blue">{{ experience.designation }}</div>
+                                    <div class="rb-col-10 rb-font-18 rb-row-flex rb-justify-center rb-align-center rb-text-mid-blue rb-exp-more-icon" style="height:30px;width:30px;background:lightgoldenrodyellow;">
+                                        {{experience.resumeIcon|safe}}
                                     </div>
-                                    <span class="rb-exp-tri-icon rb-text-lightgoldenrodyellow rb-pos-abs">&#9664;</span>
-                                {% endif %}
-                                <div class="rb-font-20 rb-text-bold">{{ experience.designation }}</div>
-                                <div class="rb-font-18 rb-text-bold">{{ experience.company }}</div>
-                                <div class="rb-font-16 rb-text-bold rb-text-mid-blue">{{ experience.duration }}</div>
-                            </div>
-                            
-                            <div class="rb-col-10 rb-row-flex rb-justify-center">
-                                <div class="rb-font-30 rb-row-flex rb-justify-center rb-align-center rb-text-lightgoldenrodyellow rb-bg-mid-blue rb-exp-more-icon">
-                                    <i class="fa-solid fa-circle-chevron-right"></i>
+                                </a>
+                            {%else%}
+                                <div class="rb-col-90 rb-col-flex rb-ht-100 rb-space-around">
+                                    {% if device != 'mobile' and device != 'tablet' %}
+                                        <div class="rb-pos-abs rb-career-icon rb-row-flex rb-bg-dark rb-justify-center rb-align-center">
+                                            <img src="{% url 'serveImages' experience.iconUrl %}" width="{{experience.iconWidth}}" height="{{experience.iconHeight}}" alt="{{experience.company}} experience Icon" />
+                                        </div>
+                                        <span class="rb-exp-tri-icon rb-text-lightgoldenrodyellow rb-pos-abs">&#9664;</span>
+                                    {% endif %}
+                                    <div class="rb-font-20 rb-text-bold">{{ experience.designation }}</div>
+                                    <div class="rb-font-18 rb-text-bold">{{ experience.company }}</div>
+                                    <div class="rb-font-16 rb-text-bold rb-text-mid-blue">{{ experience.duration }}</div>
                                 </div>
-                            </div>
+                                
+                                <div class="rb-col-10 rb-row-flex rb-justify-center">
+                                    <div class="rb-font-30 rb-row-flex rb-justify-center rb-align-center rb-text-lightgoldenrodyellow rb-bg-mid-blue rb-exp-more-icon">
+                                        <i class="fa-solid fa-circle-chevron-right"></i>
+                                    </div>
+                                </div>
+                            {%endif%}
                         </div>
                     {% endfor %}
                 </div>
