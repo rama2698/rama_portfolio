@@ -1,11 +1,11 @@
 <div class="rb-col-100 rb-row-flex rb-justify-center rb-bg-dark rb-text-lightgoldenrodyellow rb-pad-20-0">
     <div class="{%if device == 'mobile'%}rb-col-100{%else%}rb-col-80{%endif%} rb-gap-25 rb-row-flex rb-justify-center rb-align-center">
-        <div class="rb-row-flex rb-flex-wrap rb-font-16">
+        <div class="rb-row-flex rb-justify-center rb-flex-wrap rb-font-16">
             {% for link in socialLinks %}
                 {% if link.title == 'Resume' %}
-                    <div style="padding:0 10px;"><a href="api/static/{{resumeLink}}" class="rb-social-link rb-text-lightgoldenrodyellow" download="ramanand-bhagat-cv.pdf">{{link.icon|safe}}&nbsp;{{link.title}}</a></div>
+                    <div class="rb-text-center rb-mr-top-10" style="padding:10px 10px; width:79px;"><a href="api/static/{{resumeLink}}" class="rb-social-link rb-text-lightgoldenrodyellow" download="ramanand-bhagat-cv.pdf">{{link.icon|safe}}&nbsp;{{link.title}}</a></div>
                 {% else %}
-                    <div style="padding:0 10px; border-right: 1px solid lightgoldenrodyellow;"><a href="{{link.url}}" class="rb-social-link rb-text-lightgoldenrodyellow" target="_blank">{{link.icon|safe}}&nbsp;{{link.title}}</a></div>
+                    <div class="rb-text-center rb-mr-top-10" style="padding:10px 10px;width:79px; border-right: 1px solid lightgoldenrodyellow;"><a href="{{link.url}}" class="rb-social-link rb-text-lightgoldenrodyellow" target="_blank">{{link.icon|safe}}&nbsp;{{link.title}}</a></div>
                 {% endif %}
             {%endfor%}
         </div>
