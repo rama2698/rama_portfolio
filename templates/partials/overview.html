@@ -1,0 +1,28 @@
+{% load static %}
+<div class="rb-col-100 rb-intro-container rb-col-flex rb-justify-center rb-align-center rb-mr-top-10 rb-font-24 rb-bg-dark {%if device == 'mobile' or device == 'tablet'%}rb-text-center{%endif%}">
+    <div class="rb-col-80 rb-letter-space-5 rb-overview-header rb-young-font rb-text-lightgoldenrodyellow rb-text-bold rb-pad-10-0">
+        OVERVIEW
+    </div>
+</div>
+<div class="rb-col-100 rb-pad-20-0 rb-row-flex rb-flex-wrap rb-justify-center rb-text-dark rb-pos-rel">
+    <div class="{%if device == 'mobile' or device == 'tablet'%}rb-col-90{%else%}rb-col-80{%endif%} rb-font-18 rb-text-bold rb-overview-text rb-text-dark">{{overview.overviewDesc|safe}}</div>
+    <div class="{%if device == 'mobile' or device == 'tablet'%}rb-col-90{%else%}rb-col-80{%endif%} rb-row-flex rb-flex-wrap rb-justify-center rb-gap-25 rb-mr-top-20 rb-overview-positions">
+        <div class="rb-position-card {%if device == 'mobile'%}rb-mb-position-card-dim{%else%}rb-position-card-dim{%endif%} rb-bg-dark rb-text-light-blue rb-text-center rb-col-flex rb-justify-center"> 
+            <div class="rb-pos-rel" {%if device == 'mobile'%}style="font-size: 80px;"{%else%}style="font-size:125px;"{%endif%}>
+                <i class="fa-solid fa-laptop"></i>
+                <i class="fa-solid fa-code rb-pos-abs {%if device == 'mobile'%}rb-font-16 rb-mb-pos-back-code-icon{%else%}rb-pos-back-code-icon rb-font-24{%endif%}"></i>
+                <i class="fa-solid fa-layer-group rb-pos-abs {%if device == 'mobile'%}rb-mb-pos-back-stacks-icon rb-font-16{%else%} rb-pos-back-stacks-icon rb-font-24{%endif%}"></i>
+                <i class="fa-solid fa-gear rb-pos-abs {%if device == 'mobile'%}rb-font-16 rb-mb-pos-back-settings-icon{%else%}rb-font-24 rb-pos-back-settings-icon{%endif%}"></i>
+                <i class="fa-solid fa-bars-progress rb-pos-abs {%if device == 'mobile'%}rb-font-16 rb-mb-pos-back-bars-icon{%else%}rb-font-24 rb-pos-back-bars-icon{%endif%}"></i>
+            </div>
+            <div class="{%if device == 'mobile'%}rb-font-20{%else%}rb-font-24{%endif%} rb-text-bold">BACKEND DEVELOPER</div>
+        </div>
+        <div class="rb-position-card {%if device == 'mobile'%}rb-mb-position-card-dim{%else%}rb-position-card-dim{%endif%} rb-bg-dark rb-text-light-blue rb-col-flex rb-justify-center rb-text-center">
+            <div class="rb-pos-rel" {%if device == 'mobile'%}style="font-size: 80px;"{%else%}style="font-size:125px;"{%endif%}>
+                <i class="fa-solid fa-laptop"></i>
+                <i class="fa-solid fa-code rb-pos-abs {%if device == 'mobile'%}rb-mb-pos-code-icon{%else%}rb-pos-code-icon rb-font-50{%endif%}"></i>
+            </div>
+            <div class="{%if device == 'mobile'%}rb-font-20{%else%}rb-font-24{%endif%} rb-text-bold">FRONTEND DEVELOPER</div>
+        </div>
+    </div>
+</div>
