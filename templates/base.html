@@ -7,8 +7,8 @@
         <link rel="icon" href="{% static 'images/RbLogo.png' %}" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static '/css/index.css' %}">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-        <script src="https://kit.fontawesome.com/22fce8371e.js" crossorigin="anonymous"></script>
+        <script src="{% static 'script/three.min.js' %}"></script>
+        <script src="{% static 'script/font-awesome.js' %}" crossorigin="anonymous"></script>
         <script>
             const device = "{{device}}" || "tablet";
             localStorage.setItem("Device", device);
