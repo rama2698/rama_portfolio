@@ -91,7 +91,7 @@ const loadSkillsIcons = () => {
         document.getElementById("rb-skills-block").appendChild(newSkillsDiv);
         // Iterate through each skill in the row
         skillsObj[skillObj].forEach(function(skill, index) {
-            var imageUrl = skill.imageUrl;
+            var imageUrl = "api/images/" + skill.imageUrl;
             setupSkillsData(imageUrl, skillsCount, index, classId, cubeSize, skill.title);
             
         });
