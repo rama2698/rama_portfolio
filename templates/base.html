@@ -35,7 +35,7 @@
         <div class="rb-col-100" id="rb-ini-page-body">
             {% include 'partials/pageHeader.html' with device=device %}
             {%block pageBody %}{%endblock pageBody %}
-            {% include 'partials/pageFooter.html' with device=device settings=settings socialLinks=homepage.socialLinks%}
+            {% include 'partials/pageFooter.html' with device=device resumeLink=resume settings=settings socialLinks=homepage.socialLinks%}
         </div>
     
     </body>
