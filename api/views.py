@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from api.models import WebsiteContent, Skill, Experience, Project, ContactResponse
 from django.views.decorators.csrf import csrf_exempt
-from .utils import changeImageBasepath, projectsDesc
+from .utils import changeImageBasepath, projectsDesc, getBorderStyleData
 import math, json
 from django.http import HttpResponse, Http404
 from google.cloud import storage
@@ -39,16 +39,18 @@ def getAllProjects(request):
 def getAllPortfolioData(request):
     responseData = {
         "settings": {
+            "logoUrl": "",
             "borderStyle": {}
         }
     }
     # border style data
-    borderStyleResponse = WebsiteContent.objects.filter(type='borderStyle').first() or ''
-    if borderStyleResponse:
-        borderStyleData = borderStyleResponse.description.split(',')
-        for borderStyle in borderStyleData:
-            styleType = borderStyle.split("=")
-            responseData['settings']["borderStyle"][styleType[0]] = styleType[1]
+    projectBorderStyleResponse = WebsiteContent.objects.filter(type='projectBorderStyle').first() or ''
+    expBorderStyleResponse = WebsiteContent.objects.filter(type='expBorderStyle').first() or ''
+
+    LogoResponse = WebsiteContent.objects.filter(type='homepageLogo').first() or ''
+    if LogoResponse:
+        responseData['settings']['logoUrl'] = LogoResponse.imageUrl
+    responseData['settings']['borderStyle'] = getBorderStyleData(projectBorderStyleResponse, expBorderStyleResponse)
 
     # homepage carousel data
     homepageIntroTextResponse = WebsiteContent.objects.filter(type='homepage').first() or ''
