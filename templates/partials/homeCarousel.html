@@ -1,5 +1,5 @@
 {% load static %}
-<div id="home" class="rb-col-100 rb-pos-rel rb-col-flex rb-align-center rb-justify-end rb-homepage-container rb-pad-top-74 {%if device == 'mobile'%}rb-mb-homepage-container{%elif device == 'tablet'%}rb-tb-homepage-container{%else%}rb-wb-homepage-container{%endif%}" {%if homepage.homepageBG%}style="background: url({{homepage.homepageBG}}) center center / cover no-repeat;" {%else%}style="background: url('{%static 'images/homepage-bg.jpg'%}') center center / cover no-repeat;"{%endif%}>
+<div id="home" class="rb-col-100 rb-pos-rel rb-col-flex rb-align-center rb-justify-end rb-homepage-container rb-pad-top-74  rb-bg-dark {%if device == 'mobile'%}rb-mb-homepage-container{%elif device == 'tablet'%}rb-tb-homepage-container{%else%}rb-wb-homepage-container{%endif%}" {%if homepageBGUrl%}style="background: url(/api/static/{{homepageBGUrl}}) center center / cover no-repeat;" {%else%}style="background: url('{%static 'images/homepage-bg.jpg'%}') center center / cover no-repeat;"{%endif%}>
   {%if device != 'mobile'%}
     <div class="rb-young-font rb-pos-abs rb-row-flex rb-justify-center rb-align-center rb-text-light-blue rb-vertical-text-name-transform {%if device == 'mobile' or device == 'tablet'%}rb-{%if device == 'mobile'%}mb{%else%}tb{%endif%}-vertical-text-name-pos{%else%}rb-vertical-text-name-pos{%endif%}">
         <span>R</span>

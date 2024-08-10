@@ -65,6 +65,7 @@ def getAllPortfolioData(request):
         }
         sanitizedSocialLinks.append(linkObj)
     responseData['homepage'] = {
+        "homepageBGUrl": str(homepageIntroTextResponse.imageUrl).replace('/', ':img:') if homepageIntroTextResponse else '',
         "introText": homepageIntroTextResponse.description if homepageIntroTextResponse else '',
         "socialLinks": sanitizedSocialLinks
     }
