@@ -67,7 +67,7 @@ def getAllPortfolioData(request):
         "socialLinks": sanitizedSocialLinks
     }
     resumeResponse = WebsiteContent.objects.filter(type='resume').first() or ''
-    responseData['resume'] = "https://storage.googleapis.com/portfolio-2698/" + str(resumeResponse.fileUrl) if resumeResponse else ''
+    responseData['resume'] = str(resumeResponse.fileUrl).replace("files/", "files:") if resumeResponse else ''
     # overview data
     overviewResponse = WebsiteContent.objects.filter(type='overview').first() or ''
     responseData['overview'] = {
@@ -127,6 +127,7 @@ def serveImages(request, file_path):
     client = storage.Client()
     bucket = client.bucket('portfolio-2698')
     file_path = file_path.replace(":img:", "/")
+    file_path = file_path.replace("files:", "files/")
 
     try:
         blob = bucket.blob(file_path)
