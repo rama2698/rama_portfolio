@@ -1,0 +1,31 @@
+{% load static %}
+<div class="rb-col-100 rb-pos-fixed rb-zindex-top rb-row-flex rb-justify-center rb-bg-dark rb-text-lightgoldenrodyellow rb-page-header">
+    <div class="rb-col-80 rb-row-flex rb-space-between rb-pad-5-0">
+        <a href="#home" class="rb-row-flex rb-align-center rb-gap-5 rb-header-link rb-cur-pointer">
+            <div><img src="{% static 'images/RbLogo.png' %}" width="60" height="60" /></div>
+            <div class="rb-young-font rb-font-30 rb-letter-space-5">RAMA</div>
+        </a>
+        {% if device == 'mobile' or device == 'tablet' %}
+            <div class="rb-row-flex rb-align-center rb-gap-25 rb-justify-end">
+                <div class="rb-dropdown-block">
+                    <div class="rb-dropdown-button rb-young-font" onclick="openDropdownMenu()">Menu &#x2630;</div>
+                    <div class="rb-dropdown-content rb-bg-dark rb-text-lightgoldenrodyellow rb-text-bold">
+                        <a onclick="scrollToViewport('about')" class="rb-header-link rb-cur-pointer">About</a>
+                        <a onclick="scrollToViewport('skills')" class="rb-header-link rb-cur-pointer">Skills</a>
+                        <a onclick="scrollToViewport('projects')" class="rb-header-link rb-cur-pointer">Projects</a>
+                        <a onclick="scrollToViewport('work-experience')" class="rb-header-link rb-cur-pointer">Work</a>
+                        <a onclick="scrollToViewport('contact')" class="rb-header-link rb-cur-pointer">Contact</a>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="rb-row-flex rb-align-center rb-gap-25 rb-justify-end rb-text-lightgoldenrodyellow rb-text-bold">
+                <a onclick="scrollToViewport('about')" class="rb-header-link rb-cur-pointer">About</a>
+                <a onclick="scrollToViewport('skills')" class="rb-header-link rb-cur-pointer">Skills</a>
+                <a onclick="scrollToViewport('projects')" class="rb-header-link rb-cur-pointer">Projects</a>
+                <a onclick="scrollToViewport('work-experience')" class="rb-header-link rb-cur-pointer">Work</a>
+                <a onclick="scrollToViewport('contact')" class="rb-header-link rb-cur-pointer">Contact</a>
+            </div>
+        {% endif %}
+    </div>
+</div>

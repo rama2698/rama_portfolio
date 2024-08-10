@@ -1,0 +1,12 @@
+<div class="rb-col-100 rb-row-flex rb-justify-center rb-bg-dark rb-text-lightgoldenrodyellow rb-pad-50-0">
+    <div class="{%if device == 'mobile'%}rb-col-100{%else%}rb-col-80{%endif%} rb-gap-25 rb-row-flex rb-align-center">
+        <div class="rb-col-50  rb-font-30 rb-young-font rb-text-right rb-letter-space-5">
+            RAMA
+        </div>
+        <div class="{%if device == 'mobile'%}rb-col-flex{%else%} rb-row-flex{%endif%} rb-col-50  rb-gap-15 rb-font-16">
+            {% for link in socialLinks %}
+                <div><a href="{{link.url}}" class="rb-social-link rb-text-lightgoldenrodyellow" target="_blank">{{link.icon|safe}} &nbsp;{{link.title}}</a></div>
+            {%endfor%}
+        </div>
+    </div>
+</div>
