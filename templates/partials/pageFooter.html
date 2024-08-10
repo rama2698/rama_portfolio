@@ -5,7 +5,11 @@
         </div>
         <div class="{%if device == 'mobile'%}rb-col-flex{%else%} rb-row-flex{%endif%} rb-col-50  rb-gap-15 rb-font-16">
             {% for link in socialLinks %}
-                <div><a href="{{link.url}}" class="rb-social-link rb-text-lightgoldenrodyellow" target="_blank">{{link.icon|safe}} &nbsp;{{link.title}}</a></div>
+                {% if link.title == 'Resume' %}
+                    <div><a href="api/static/{{resumeLink}}" class="rb-social-link rb-text-lightgoldenrodyellow" download="ramanand-bhagat-cv.pdf">{{link.icon|safe}}&nbsp;{{link.title}}</a></div>
+                {% else %}
+                    <div><a href="{{link.url}}" class="rb-social-link rb-text-lightgoldenrodyellow" target="_blank">{{link.icon|safe}}&nbsp;{{link.title}}</a></div>
+                {% endif %}
             {%endfor%}
         </div>
     </div>
