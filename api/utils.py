@@ -1,11 +1,11 @@
 # constants
 defaultImageUrls = {
     "project": {
-        "imageUrl": "https://storage.googleapis.com/portfolio-2698/2698/project-card-bg.jpg"
+        "imageUrl": "2698:img:project-card-bg.jpg"
     },
     "experience": {
-        "iconUrl": "https://storage.googleapis.com/portfolio-2698/2698/exp-icon.png",
-        "imageUrl": "https://storage.googleapis.com/portfolio-2698/2698/exp-bg.png",
+        "iconUrl": "2698:img:exp-icon.png",
+        "imageUrl": "2698:img:exp-bg.png",
     }
 }
 
@@ -13,7 +13,7 @@ def changeImageBasepath(objects, fields, type=None):
     for object in objects:
         for field in fields:
             if(field in object):
-                object[field] = 'https://storage.googleapis.com/portfolio-2698/' + object[field] if object[field] else defaultImageUrls[type][field]
+                object[field] = object[field].replace('/', ':img:') if object[field] else defaultImageUrls[type][field]
         if type == 'experience':
             iconSizeStr = object['iconSize'].split('x') if object['iconSize'] else [25, 25]
             object['iconWidth'] = iconSizeStr[0]
