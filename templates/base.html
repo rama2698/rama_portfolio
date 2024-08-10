@@ -1,0 +1,42 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>{%block pageTitle%}{%endblock pageTitle%}</title>
+        <meta charset="utf-8">
+        <link rel="icon" href="{% static 'images/RbLogo.png' %}" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static '/css/index.css' %}">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <script src="https://kit.fontawesome.com/22fce8371e.js" crossorigin="anonymous"></script>
+        <script>
+            const device = "{{device}}" || "tablet";
+            localStorage.setItem("Device", device);
+            const skillsObj = {{skills.skillsData | safe}};
+            const experiences = {{experiences.experienceData|safe}};
+            const homepageIntroText = "{{homepage.introText|safe}}";
+        </script>
+        <style>
+            @font-face {
+                font-family: 'YoungFont';
+                src: url("{% static 'fonts/YoungerThanMe.ttf' %}") format('truetype');
+            }
+            body {margin:0;width:100%; overflow-x: hidden;}
+            a { text-decoration: none;}
+            * {
+                scroll-behavior: smooth;
+            }
+            .rb-young-font {font-family: 'YoungFont', sans-serif}
+        </style>
+        <script src="{% static 'script/index.js' %}"></script>
+    </head>
+
+    <body class="rb-bg-white">
+        <div class="rb-col-100" id="rb-ini-page-body">
+            {% include 'partials/pageHeader.html' with device=device %}
+            {%block pageBody %}{%endblock pageBody %}
+            {% include 'partials/pageFooter.html' with device=device settings=settings socialLinks=homepage.socialLinks%}
+        </div>
+    
+    </body>
+</html>
