@@ -1,0 +1,17 @@
+{% load static %}
+<div id="skills" class="rb-col-100 {%if device != 'mobile' and device != 'tablet'%}{%endif%}">
+    {% if device == 'mobile' or device == 'tablet' %}
+        <div class="rb-col-100 rb-letter-space-5 rb-font-24 rb-pad-10-0 rb-text-center rb-young-font rb-bg-dark rb-text-lightgoldenrodyellow">
+            MY SKILLS
+        </div>
+    {% else %}
+        <div class="rb-col-100 rb-letter-space-5 rb-bg-dark rb-row-flex rb-justify-center rb-align-center">
+            <div class="rb-col-80 rb-young-font rb-pad-10-0 rb-font-24 rb-text-lightgoldenrodyellow">
+                MY SKILLS
+            </div>
+        </div>
+    {% endif %}
+    <div class="rb-col-100 rb-pad-30-0 rb-col-flex rb-justify-center rb-pos-rel rb-align-center"> 
+        <div id="rb-skills-block" class="rb-skills-container rb-col-100 rb-col-flex rb-justify-center rb-gap-10 rb-align-center"></div>
+    </div>
+</div>
