@@ -1,0 +1,48 @@
+<div id="contact" class="rb-col-100 rb-pos-rel rb-row-flex rb-justify-center rb-contact-form-container rb-bg-dark">
+    <div class="rb-bg-dark {%if device == 'mobile'%}rb-col-330p{%elif device == 'tablet'%}rb-col-500p{%else%}rb-col-680p{% endif %} rb-contact-form rb-col-flex rb-align-center ">
+        <div class="rb-row-flex rb-align-center rb-justify-center rb-gap-10 rb-contact-form-header">
+            <div class="rb-chat-icon">
+                <i class="fa-regular fa-message" style="font-size: 36px;color:#0392ae;margin-top: 17px;margin-left: -5px;">
+                    <div class="rb-chat-icon-dot">
+                        <div class="rb-chat-bubble">
+                            <span class="rb-chat-dot"></span>
+                            <span class="rb-chat-dot"></span>
+                            <span class="rb-chat-dot"></span>
+                        </div>
+                    </div>
+                </i>
+            </div>
+            <div class="rb-young-font rb-font-20 rb-text-white">
+                Get In Touch
+            </div>
+            <div class="rb-chat-icon" style="transform: rotatey(180deg);">
+                <i class="fa-regular fa-message" style="font-size: 36px;color:#0392ae;margin-top: 17px;margin-left: -5px;">
+                    <div class="rb-chat-icon-dot">
+                        <div class="rb-chat-bubble">
+                            <span class="rb-chat-dot rb-chat-delay"></span>
+                            <span class="rb-chat-dot rb-chat-delay"></span>
+                            <span class="rb-chat-dot rb-chat-delay"></span>
+                        </div>
+                    </div>
+                </i>
+            </div>
+        </div>
+        <div class="rb-contact-form-transition rb-mr-top-20 rb-col-100 rb-row-flex rb-justify-center">
+            <form id="rb-form-send-mail" class="{%if device == 'mobile'%}rb-col-100{%else%}rb-col-100{%endif%} rb-col-flex rb-justify-center rb-gap-15 rb-align-center">
+                {% csrf_token %}
+                <div class="rb-col-100 {%if device == 'mobile'%}rb-col-flex{%else%}rb-row-flex{%endif%} rb-space-between rb-flex-wrap">
+                    <input type="text" id="name" name="name" class="{%if device == 'mobile'%}rb-col-314p{%elif device == 'tablet'%}rb-col-45{%else%}rb-col-300p{%endif%}" placeholder="Name *" value="" minlength="3" maxlength="50" required>
+                    <input type="email" id="email" name="email" class="{%if device == 'mobile'%}rb-col-314p{%elif device == 'tablet'%}rb-col-45{%else%}rb-col-300p{%endif%}" placeholder="E-mail *" value="" maxlength="50" required>
+                </div>
+                <div class="rb-col-100" name="subject" required="">
+                    <input type="text" id="subject" name="subject" class="{%if device == 'mobile'%}rb-col-314p{%elif device == 'tablet'%}rb-col-484p{%else%}rb-col-666p{%endif%}" placeholder="Subject *" value="" minlength="8" maxlength="100" required>
+                </div>
+                <div class="rb-col-100" name="message" required="">
+                    <textarea class="{%if device == 'mobile'%}rb-col-314p{%elif device == 'tablet'%}rb-col-484p{%else%}rb-col-666p{%endif%} rb-form-input-contact-body" id="message" name="message" rows="4" cols="50" minlength="150" placeholder="Enter your message here...*"></textarea>
+                </div>
+                <div class="rb-col-100 rb-msg" style="height: 20px;"></div>
+                <button type="submit" id="rb-send-mail" class="rb-text-white rb-font-16 rb-bg-mid-blue rb-text-bold rb-pad-12 rb-cur-pointer" style="margin-top:-10px;">Send <i class="fa-solid fa-square-arrow-up-right"></i></button>
+            </form>
+        </div>
+    </div>
+</div>
