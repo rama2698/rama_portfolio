@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add CSS rules to the style element
     style.innerHTML = `
         .rb-exp-container {
-            height: ${experiencesDiv.length * 170 + 20}px;
+            height: ${(experiencesDiv.length-1) * 170 + 110}px;
         }
         .rb-mb-project-card-container {
             height: ${projectCards.length * 100 + 350}px;
@@ -334,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 opacity: 1;
             }
             to {
-                height: ${experiencesDiv.length * 170 + 20}px;
+                height: ${(experiencesDiv.length-1) * 170 + 110}px;
                 opacity: 1;
             }
         }
