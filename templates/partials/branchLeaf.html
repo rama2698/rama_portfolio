@@ -1,0 +1,23 @@
+<svg class="{{leafClass}}" width="{{leafWidth}}" height="{{leafHeight}}" viewBox="0 0 400 500" style="{{leafStyle}}">
+    <!-- Leaf Shape -->
+    <path d="M 200,100
+             Q 250,150 270,200
+             Q 290,250 270,300
+             Q 250,350 200,400
+             Q 150,350 130,300
+             Q 110,250 130,200
+             Q 150,150 200,100 Z"
+          fill="{%if leafColor %}{{leafColor}}{%else%}#dee1e4{%endif%}" 
+          stroke="{%if leafOutlineColor %}{{leafOutlineColor}} {%else%}#dee1e4{%endif%}" 
+          stroke-width="{{leafOutlineWidth}}"/>
+    
+    <!-- Main Vein -->
+    <line x1="200" y1="100" x2="200" y2="{{mainVeinLength}}" 
+          stroke="{%if mainVeinColor %}{{mainVeinColor}} {%else%}#dee1e4{%endif%}" stroke-width="{{mainVeinWidth}}"/>
+    
+    <!-- Side Veins -->
+    <path d="M 200,180 Q 195,200 230,150" fill="none" stroke="{%if sideVeinColor %}{{sideVeinColor}} {%else%}#dee1e4{%endif%}" stroke-width="{{sideVeinWidth}}"/>
+    <path d="M 200,300 Q 225,250 250,230" fill="none" stroke="{%if sideVeinColor %}{{sideVeinColor}} {%else%}#dee1e4{%endif%}" stroke-width="{{sideVeinWidth}}"/>
+    <path d="M 200,250 Q 200,230 155,180" fill="none" stroke="{%if sideVeinColor %}{{sideVeinColor}} {%else%}#dee1e4{%endif%}" stroke-width="{{sideVeinWidth}}"/>
+    <path d="M 200,350 Q 180,300 140,270" fill="none" stroke="{%if sideVeinColor %}{{sideVeinColor}} {%else%}#dee1e4{%endif%}" stroke-width="{{sideVeinWidth}}"/>
+</svg>
