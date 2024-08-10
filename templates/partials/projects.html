@@ -1,0 +1,54 @@
+{% load static %}
+<div id="projects" class="rb-col-100 rb-col-flex rb-align-center rb-pos-rel {%if device == 'mobile' or device == 'tablet'%}rb-mb-project-container{%else%}rb-project-container{%endif%}">
+    <div class="rb-project-header-container rb-col-100 rb-bg-dark rb-row-flex rb-justify-center">
+        <div class="rb-young-font rb-letter-space-5 rb-pad-10-0 rb-text-lightgoldenrodyellow rb-font-24  {%if device == 'mobile' or device == 'tablet'%}rb-text-center rb-mb-project-header {%else%}rb-col-80 rb-project-header{%endif%}">Projects</div>
+    </div>
+    <div class="rb-project-header-container rb-col-100 rb-row-flex rb-justify-center">
+        <div class="rb-text-bold rb-font-18 rb-pad-10-0 rb-text-dark {%if device == 'mobile' or device == 'tablet'%}rb-mb-project-header-desc rb-col-90{%else%}rb-project-header-desc rb-col-80{%endif%}">
+            {{projects.projectsDesc}}
+        </div>
+    </div>
+    <div class="rb-col-100 rb-bg-gray rb-mr-bot-20 rb-pos-rel rb-overflow-hidden rb-row-flex rb-justify-center rb-pad-40-0">
+        {% include 'partials/borderBotRight.html' with borderClass="rb-pos-abs rb-bot-0 rb-rt-0" branchPrefixClass="rb-project" leafHorClass="rb-pos-abs rb-project-bot-hor-leaf" leafVerClass="rb-pos-abs rb-project-bot-ver-leaf" branchColor=borderStyle.branchColor leafOutlineColor=borderStyle.leafOutlineColor leafColor=borderStyle.leafColor mainVeinColor=borderStyle.mainVeinColor sideVeinColor=borderStyle.sideVeinColor %}
+        {% include 'partials/borderTopLeft.html' with borderClass="rb-pos-abs rb-top-0 rb-lt-0" branchPrefixClass="rb-project" leafHorClass="rb-pos-abs rb-project-top-hor-leaf" leafVerClass="rb-pos-abs rb-project-top-ver-leaf" branchColor=borderStyle.branchColor leafOutlineColor=borderStyle.leafOutlineColor leafColor=borderStyle.leafColor mainVeinColor=borderStyle.mainVeinColor sideVeinColor=borderStyle.sideVeinColor %}
+        {% if device == 'mobile' or device == 'tablet' %}
+            <div class="rb-col-90 rb-col-flex rb-justify-center rb-align-center rb-flex-wrap rb-gap-25 rb-mb-project-card-container {%if device == 'tablet'%}rb-zindex-4 rb-pad-lt-55 rb-pad-rt-65{%else%}rb-zindex-5{%endif%}" >
+                {% for project in projects.projectsData %}
+                    <div id="rb-mb-project-card-{{forloop.counter0}}" class="rb-col-100 rb-mb-project-card rb-cur-pointer rb-pos-rel" {%if project.imageUrl%}style="background:url('{{project.imageUrl}}');background-repeat: no-repeat; background-size: cover;"{%else%}style="background:url('https://cdn.pixabay.com/photo/2024/06/20/17/03/fishing-8842590_1280.jpg');background-repeat: no-repeat; background-size: cover;"{%endif%} onclick="handleProjectOpen('#rb-mb-project-card-'+{{forloop.counter0}})">
+                        <div class="rb-col-100 rb-text-center rb-letter-space-5 rb-mb-project-card-title rb-font-30 rb-pad-20-0 rb-young-font rb-text-lightgoldenrodyellow">{{ project.title}}</div>
+                        <div class="rb-col-100 rb-pos-abs rb-bot-0 rb-mb-project-card-overlay">
+                            <div class="rb-col-100 rb-row-flex rb-justify-center rb-gap-15">
+                                {%if project.gitUrl%}
+                                    <a href={{project.gitUrl}} target="_blank" class="rb-mb-project-card-link rb-text-lightgoldenrodyellow rb-bg-dark rb-row-flex rb-justify-center rb-align-center rb-font-55"><i class="fa-brands fa-github"></i></a>
+                                {%endif%}
+                                {%if project.liveUrl%}
+                                    <a href={{project.liveUrl}} target="_blank" class="rb-mb-project-card-link rb-text-lightgoldenrodyellow rb-bg-dark rb-row-flex rb-justify-center rb-align-center rb-font-55"><i class="fa-solid fa-circle-chevron-right"></i></a>
+                                {%endif%}
+                            </div>
+                            <div class="rb-pad-12 rb-text-center rb-text-bold rb-row-flex rb-align-center rb-text-lightgoldenrodyellow" style="height:147px; margin-top: 30px; background: rgba(0, 0, 0, 0.4); border-radius: 0 0 40px 40px;">{{project.description}}</div>
+                        </div> 
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="rb-row-flex rb-justify-center rb-flex-wrap rb-gap-25 rb-project-card-container rb-zindex-4 rb-pad-lt-55 rb-pad-rt-65">
+                {% for project in projects.projectsData %}
+                    <div id="rb-project-card-{{forloop.counter0}}" class="rb-project-card rb-cur-pointer rb-pos-rel rb-zindex-4" {%if project.imageUrl%}style="background:url({{project.imageUrl}});background-repeat: no-repeat; background-size: cover;"{%else%}style="background:url('https://cdn.pixabay.com/photo/2024/06/20/17/03/fishing-8842590_1280.jpg');background-repeat: no-repeat; background-size: cover;"{%endif%} onclick="handleProjectOpen('#rb-project-card-'+{{forloop.counter0}})">
+                        <div class="rb-col-100 rb-zindex-2 rb-text-center rb-letter-space-5 rb-project-card-title rb-font-30 rb-pos-abs rb-young-font rb-text-lightgoldenrodyellow">{{ project.title}}</div>
+                        <div class="rb-col-100 rb-pos-abs rb-bot-0 rb-project-card-overlay">
+                            <div class="rb-col-100 rb-row-flex rb-justify-center rb-gap-15">
+                                {%if project.gitUrl%}
+                                    <a href={{project.gitUrl}} target="_blank" class="rb-project-card-link rb-text-lightgoldenrodyellow rb-bg-dark rb-row-flex rb-justify-center rb-align-center rb-font-55"><i class="fa-brands fa-github"></i></a>
+                                {%endif%}
+                                {%if project.liveUrl%}
+                                    <a href={{project.liveUrl}} target="_blank" class="rb-project-card-link rb-text-lightgoldenrodyellow rb-bg-dark rb-row-flex rb-justify-center rb-align-center rb-font-55"><i class="fa-solid fa-circle-chevron-right"></i></a>
+                                {%endif%}
+                            </div>
+                            <div class="rb-pad-12 rb-text-center rb-text-bold rb-row-flex rb-align-center rb-text-lightgoldenrodyellow" style="height:147px; margin-top: 30px; background: rgba(0, 0, 0, 0.4); border-radius: 0 0 14px 14px;">{{project.description}}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</div>
