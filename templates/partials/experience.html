@@ -19,7 +19,7 @@
                             <div class="rb-col-90 rb-col-flex rb-ht-100 rb-space-around">
                                 {% if device != 'mobile' and device != 'tablet' %}
                                     <div class="rb-pos-abs rb-career-icon rb-row-flex rb-bg-dark rb-justify-center rb-align-center">
-                                        <img src="{{experience.iconUrl}}" width="{{experience.iconWidth}}" height="{{experience.iconHeight}}" alt="{{experience.company}} experience Icon" />
+                                        <img src="{% url 'serveImages' experience.iconUrl %}" width="{{experience.iconWidth}}" height="{{experience.iconHeight}}" alt="{{experience.company}} experience Icon" />
                                     </div>
                                     <span class="rb-exp-tri-icon rb-text-lightgoldenrodyellow rb-pos-abs">&#9664;</span>
                                 {% endif %}
