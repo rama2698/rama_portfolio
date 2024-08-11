@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-b*_+&bfuyh3^h&&f)4iy$!4t4eh3t5139dhb7x29pmsl76_sad'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['rama-portfolio.com', 'www.rama-portfolio.com', 'localhost:8000', 'localhost']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'portfolio',
     'api',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'portfolio.platformMiddleware.PlatformDetection',
 ]
 
 ROOT_URLCONF = 'rama_portfolio.urls'
@@ -82,6 +84,14 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Google storage
+from google.oauth2 import service_account
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+GS_BUCKET_NAME = 'portfolio-2698'  # Replace with your bucket name
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(os.path.join(BASE_DIR, 'rama_portfolio/portfolio-429205-fc4e13c61bad.json'))
+
+MEDIA_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/media/'
 
 
 # Password validation
@@ -119,6 +129,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS=[os.path.join(BASE_DIR,"static")]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
